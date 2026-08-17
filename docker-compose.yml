@@ -1,0 +1,14 @@
+services:
+  home-ca:
+    build: .
+    container_name: home-ca
+    ports:
+      - "3005:80"
+      - "2560:2560"
+    volumes:
+      - data:/app/data
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme}
+    restart: unless-stopped
+volumes:
+  data:
